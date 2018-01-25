@@ -26,6 +26,7 @@ ReactDOM.render(
     {/*<App />*/}
       <BrowserRouter>
           <div>
+              <div>React Router</div>
               <Route path="/entry" component={Entry}/>
               <Route path="/exit" component={Exit}/>
           </div>
