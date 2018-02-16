@@ -37,6 +37,7 @@ class PostNew extends Component {
             component={this.renderField}
           />
         </form>
+        <button className="btn btn-primary" type="submit">Submit</button>
       </div>
     )
   }
