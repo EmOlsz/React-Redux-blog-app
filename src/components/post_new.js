@@ -12,16 +12,23 @@ class PostNew extends Component {
           type="text"
           {...field.input}
         />
-        {field.meta.error}
+        {field.meta.touched ? field.meta.error : ''}
       </div>
     )
   }
 
+  onSubmit(values) {
+    console.log(values);
+  }
+
   render() {
+
+    const { handleSubmit } = this.props;
+
     return (
       <div>
         <h1>New post:</h1>
-        <form>
+        <form onSubmit={handleSubmit(this.onSubmit)}>
           <Field
             name="title"
             placeholderValue="Title"
@@ -37,8 +44,8 @@ class PostNew extends Component {
             placeholderValue="Content"
             component={this.renderField}
           />
+          <button className="btn btn-primary" type="submit">Submit</button>
         </form>
-        <button className="btn btn-primary" type="submit">Submit</button>
       </div>
     )
   }
