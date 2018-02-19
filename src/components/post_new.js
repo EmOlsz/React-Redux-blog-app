@@ -5,7 +5,8 @@ class PostNew extends Component {
 
   renderField(field) {
 
-    const className = `form-control ${field.meta.touched && field.meta.error ? 'error__input' : ''}`;
+    const { meta : { touched, error } } = field;
+    const className = `form-control ${touched && error ? 'error__input' : ''}`;
 
     return (
       <div className="form-group">
@@ -16,7 +17,7 @@ class PostNew extends Component {
           {...field.input}
         />
         <div className="error__text">
-          {field.meta.touched ? field.meta.error : ''}
+          {touched ? error : ''}
         </div>
       </div>
     )
