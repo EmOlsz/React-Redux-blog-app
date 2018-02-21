@@ -10,3 +10,6 @@
 .error__input {
     border-color: red !important;
 }
+.margin-left {
+    margin-left: 10px;
+}
