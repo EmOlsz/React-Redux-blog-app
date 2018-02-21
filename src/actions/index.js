@@ -15,8 +15,9 @@ export function fetchPosts() {
     };
 }
 
-export function sendPosts(values) {
-    const request = axios.post(`${ROOT_URL}/posts${API_KEY}`, values);
+export function sendPosts(values, redirect) {
+    const request = axios.post(`${ROOT_URL}/posts${API_KEY}`, values)
+                         .then(() => redirect());
 
     return {
         type: SEND_POSTS,
