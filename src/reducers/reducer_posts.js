@@ -6,9 +6,6 @@ export default function (state = {}, action) {
         case FETCH_POSTS:
             return _.mapKeys(action.payload.data, 'id');
 
-        // case SEND_POSTS:
-        //     return;
-
         default:
             return state;
     }
