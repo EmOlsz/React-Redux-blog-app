@@ -1,13 +1,48 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+import { fetchSinglePost } from '../actions';
 
 class PostNew extends Component {
+
+  componentDidMount() {
+    const { id } = this.props.match.params;
+    this.props.fetchSinglePost(id);
+  }
+
   render() {
+    const { id } = this.props.match.params;
+    if (this.props.singlePost.id !== id) {
+      return (
+        <div>
+          <h1>Post doesn't exists :(</h1>
+        </div>
+      )
+    }
     return (
       <div>
         <h1>Post show</h1>
+        <div>
+          <h3>Title</h3>
+          <p>{this.props.singlePost.title}</p>
+        </div>
+        <div>
+          <h3>Categories</h3>
+          <p>{this.props.singlePost.categories}</p>
+        </div>
+        <div>
+          <h3>Content</h3>
+          <p>{this.props.singlePost.content}</p>
+        </div>
       </div>
     )
   }
 }
 
-export default PostNew;
+function mapStateToProps(state, ownProps) {
+  return {
+    singlePost: state.posts[ownProps.match.params.id]
+  }
+}
+
+export default connect(mapStateToProps, { fetchSinglePost })(PostNew);
