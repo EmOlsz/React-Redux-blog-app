@@ -11,28 +11,22 @@ class PostNew extends Component {
   }
 
   render() {
-    const { id } = this.props.match.params;
-    if (this.props.singlePost.id !== id) {
-      return (
-        <div>
-          <h1>Post doesn't exists :(</h1>
-        </div>
-      )
-    }
+    const { singlePost } = this.props;
+    if (!singlePost) return <h1>Loading...</h1>;
     return (
       <div>
         <h1>Post show</h1>
         <div>
           <h3>Title</h3>
-          <p>{this.props.singlePost.title}</p>
+          <p>{singlePost.title}</p>
         </div>
         <div>
           <h3>Categories</h3>
-          <p>{this.props.singlePost.categories}</p>
+          <p>{singlePost.categories}</p>
         </div>
         <div>
           <h3>Content</h3>
-          <p>{this.props.singlePost.content}</p>
+          <p>{singlePost.content}</p>
         </div>
       </div>
     )
