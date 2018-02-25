@@ -1,3 +1,13 @@
+.post__anchor {
+    display: block;
+    overflow: auto;
+    color: inherit;
+}
+
+.post__anchor:hover {
+    text-decoration: none;
+}
+
 .post__title {
     font-size: 20px;
 }
