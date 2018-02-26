@@ -37,8 +37,9 @@ export function fetchSinglePost(id) {
     }
 }
 
-export function deletePost(id) {
-    const request = axios.delete(`${ROOT_URL}/posts/${id}${API_KEY}`);
+export function deleteSinglePost(id, redirect) {
+    const request = axios.delete(`${ROOT_URL}/posts/${id}${API_KEY}`)
+                         .then(() => redirect());
 
     return {
         type: DELETE_POST,

@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import { FETCH_POSTS, FETCH_SINGLE_POST } from '../actions';
+import { FETCH_POSTS, FETCH_SINGLE_POST, DELETE_POST } from '../actions';
 
 export default function (state = {}, action) {
     switch (action.type) {
@@ -8,6 +8,11 @@ export default function (state = {}, action) {
 
         case FETCH_SINGLE_POST:
             return {...state, [action.payload.data.id]: action.payload.data };
+
+      case DELETE_POST:
+            const newState = {...state};
+            delete newState.action.payload.data.id;
+            return newState;
 
         default:
             return state;

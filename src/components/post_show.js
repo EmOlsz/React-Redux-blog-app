@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { fetchSinglePost } from '../actions';
+import { fetchSinglePost, deleteSinglePost } from '../actions';
 
 class PostNew extends Component {
 
@@ -12,7 +12,10 @@ class PostNew extends Component {
   }
 
   onDelete() {
-
+    const { id } = this.props.match.params;
+    this.props.deleteSinglePost(id, () => {
+      this.props.history.push('/');
+    });
   }
 
   render() {
@@ -38,7 +41,7 @@ class PostNew extends Component {
         </Link>
         <button
           className="btn btn-danger margin-left"
-          onClick={this.onDelete}
+          onClick={this.onDelete.bind(this)}
         >
           Delete
         </button>
@@ -53,4 +56,4 @@ function mapStateToProps(state, ownProps) {
   }
 }
 
-export default connect(mapStateToProps, { fetchSinglePost })(PostNew);
+export default connect(mapStateToProps, { fetchSinglePost, deleteSinglePost })(PostNew);
