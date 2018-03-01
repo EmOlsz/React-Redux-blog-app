@@ -43,6 +43,6 @@ export function deleteSinglePost(id, redirect) {
 
     return {
         type: DELETE_POST,
-        payload: request
+        payload: id
     }
 }
