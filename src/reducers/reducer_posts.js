@@ -9,7 +9,7 @@ export default function (state = {}, action) {
         case FETCH_SINGLE_POST:
             return {...state, [action.payload.data.id]: action.payload.data };
 
-      case DELETE_POST:
+        case DELETE_POST:
             return _.omit(state, action.payload);
 
         default:
